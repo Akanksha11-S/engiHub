@@ -1,7 +1,9 @@
+
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Image from 'next/image';
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 export default function Advertisement() {
   return (
@@ -24,9 +26,11 @@ export default function Advertisement() {
             Need supplies? Drop by the <strong>Goodluck Stationery Shop</strong> near the campus canteen for exclusive student discounts on all your essentials.
           </p>
         </div>
-        <Button variant="outline" className="mt-2 md:mt-0 flex-shrink-0">
-            Find Us
-            <ArrowRight className="ml-2 h-4 w-4" />
+        <Button variant="outline" className="mt-2 md:mt-0 flex-shrink-0" asChild>
+            <Link href="https://www.google.com/maps/search/?api=1&query=Goodluck+Stationery+Shop" target="_blank" rel="noopener noreferrer">
+              Find Us
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
         </Button>
       </CardContent>
     </Card>
