@@ -7,7 +7,7 @@ export default function MobileNav() {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button variant="outline" size="icon" className="shrink-0 md:hidden bg-transparent text-primary-foreground border-primary-foreground/50 hover:bg-primary-foreground/10 hover:text-primary-foreground">
+        <Button variant="ghost" size="icon" className="shrink-0 md:hidden text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground">
           <Menu className="h-5 w-5" />
           <span className="sr-only">Toggle navigation menu</span>
         </Button>

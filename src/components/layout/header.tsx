@@ -29,7 +29,7 @@ export default function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-50 flex h-16 items-center gap-4 border-b bg-primary text-primary-foreground px-4 md:px-6">
+    <header className="sticky top-0 z-50 flex h-16 items-center gap-4 border-b bg-primary px-4 md:px-6">
       <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
         <Link href="/" className="flex items-center gap-2 text-lg font-semibold md:text-base text-primary-foreground">
           <Building2 className="h-6 w-6" />
@@ -54,7 +54,7 @@ export default function Header() {
         </div>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="relative h-8 w-8 rounded-full hover:bg-primary/80">
+            <Button variant="ghost" className="relative h-8 w-8 rounded-full hover:bg-primary/80 focus-visible:ring-0 focus-visible:ring-offset-0">
               <Avatar className="h-8 w-8">
                 <AvatarImage src={`https://picsum.photos/seed/${userName}/100/100`} alt={userName} />
                 <AvatarFallback>{getInitials(userName)}</AvatarFallback>
