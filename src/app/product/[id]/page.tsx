@@ -3,12 +3,13 @@ import Image from 'next/image';
 import { products } from '@/lib/mock-data';
 import Header from '@/components/layout/header';
 import { Button } from '@/components/ui/button';
-import { Heart, Flag, MessageSquare } from 'lucide-react';
+import { Heart, Flag, MessageSquare, ShoppingCart } from 'lucide-react';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import VerifiedStudentBadge from '@/components/product/verified-student-badge';
 import ChatModal from '@/components/product/chat-modal';
+import Link from 'next/link';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -79,6 +80,12 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
             </Card>
 
             <div className="flex flex-col gap-2 min-[400px]:flex-row">
+              <Button size="lg" className="flex-1" asChild>
+                <Link href={`/checkout/${product.id}`}>
+                  <ShoppingCart className="mr-2 h-4 w-4" />
+                  Buy Now
+                </Link>
+              </Button>
               <ChatModal product={product} />
 
               <Button variant="outline" size="lg">
