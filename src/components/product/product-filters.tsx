@@ -19,7 +19,7 @@ const categories = ['Textbooks', 'Electronics', 'Stationery', 'Other'];
 const conditions = ['New', 'Like New', 'Used'];
 
 export default function ProductFilters({ allProducts, setFilteredProducts }: ProductFiltersProps) {
-  const [priceRange, setPriceRange] = useState([0, 5000]);
+  const [priceRange, setPriceRange] = useState([0, 2000]);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedCondition, setSelectedCondition] = useState<string>('All');
 
@@ -48,7 +48,7 @@ export default function ProductFilters({ allProducts, setFilteredProducts }: Pro
   };
   
   const clearFilters = () => {
-    setPriceRange([0, 5000]);
+    setPriceRange([0, 2000]);
     setSelectedCategories([]);
     setSelectedCondition('All');
   }
@@ -63,7 +63,7 @@ export default function ProductFilters({ allProducts, setFilteredProducts }: Pro
           <h3 className="mb-2 font-semibold">Price Range</h3>
           <Slider
             min={0}
-            max={5000}
+            max={2000}
             step={100}
             value={priceRange}
             onValueChange={setPriceRange}

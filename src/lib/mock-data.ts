@@ -58,7 +58,7 @@ export const products: Product[] = [
   {
     id: 3,
     name: 'Mini Drafter for Engineering Drawing',
-    price: 25,
+    price: 500,
     description: 'Portable and accurate mini drafter. Essential for engineering drawing classes. Comes with a carrying case.',
     images: ['https://picsum.photos/seed/mini-drafter/600/400', 'https://picsum.photos/seed/drafting-tools/600/400'],
     category: 'Stationery',
@@ -68,7 +68,7 @@ export const products: Product[] = [
   {
     id: 4,
     name: 'Set of 12 Mechanical Pencils',
-    price: 14,
+    price: 50,
     description: '0.5mm lead mechanical pencils with extra lead refills and erasers. Brand new, in original packaging.',
     images: ['https://picsum.photos/seed/mech-pencils/600/400', 'https://picsum.photos/seed/pencils-box/600/400'],
     category: 'Stationery',
@@ -109,7 +109,7 @@ export const products: Product[] = [
   {
     id: 8,
     name: 'Set of French Curves',
-    price: 9,
+    price: 35,
     description: 'Set of 3 plastic french curves for manual drafting. Essential tool for drawing smooth curves of varying radii.',
     images: ['https://picsum.photos/seed/french-curves/600/400'],
     category: 'Stationery',
@@ -119,7 +119,7 @@ export const products: Product[] = [
   {
     id: 9,
     name: '30cm Roller Scale',
-    price: 15,
+    price: 30,
     description: 'Transparent roller scale, perfect for drawing parallel lines and graphs. In great condition.',
     images: ['https://picsum.photos/seed/roller-scale/600/400'],
     category: 'Stationery',
