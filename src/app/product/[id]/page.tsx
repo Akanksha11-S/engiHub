@@ -23,15 +23,25 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
+import { useState } from 'react';
+import ImageViewerModal from '@/components/product/image-viewer-modal';
 
 export default function ProductDetailPage() {
   const params = useParams();
   const productId = Array.isArray(params.id) ? params.id[0] : params.id;
   const product = products.find(p => p.id.toString() === productId);
 
+  const [isViewerOpen, setIsViewerOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState('');
+
   if (!product) {
     notFound();
   }
+
+  const handleImageDoubleClick = (imageUrl: string) => {
+    setSelectedImage(imageUrl);
+    setIsViewerOpen(true);
+  };
 
   return (
     <div className="flex min-h-screen w-full flex-col bg-background">
@@ -41,7 +51,7 @@ export default function ProductDetailPage() {
           <Carousel className="w-full">
             <CarouselContent>
               {product.images.map((img, index) => (
-                <CarouselItem key={index}>
+                <CarouselItem key={index} onDoubleClick={() => handleImageDoubleClick(img)}>
                   <Card className="overflow-hidden">
                     <CardContent className="p-0 aspect-video relative">
                        <Image src={img} alt={`${product.name} image ${index + 1}`} fill className="object-cover" data-ai-hint={`${product.category.toLowerCase()} item`} />
@@ -121,6 +131,12 @@ export default function ProductDetailPage() {
           </div>
         </div>
       </main>
+      <ImageViewerModal 
+        isOpen={isViewerOpen}
+        onOpenChange={setIsViewerOpen}
+        imageUrl={selectedImage}
+        altText={product.name}
+      />
     </div>
   );
 }
