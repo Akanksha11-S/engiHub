@@ -1,3 +1,5 @@
+'use client';
+
 import {
   Dialog,
   DialogContent,
@@ -9,15 +11,55 @@ import {
 } from '@/components/ui/dialog';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
-import { Label } from '../ui/label';
 import { Textarea } from '../ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
 import { PlusCircle } from 'lucide-react';
 import ImageUpload from '../product/image-upload';
+import { useForm, Controller } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { useToast } from '@/hooks/use-toast';
+import { useState } from 'react';
+
+const listingSchema = z.object({
+  name: z.string().min(3, { message: 'Name must be at least 3 characters.' }),
+  description: z.string().min(10, { message: 'Description must be at least 10 characters.' }),
+  price: z.coerce.number().positive({ message: 'Price must be a positive number.' }),
+  category: z.string({ required_error: 'Please select a category.' }),
+  images: z.array(z.string()).min(1, { message: 'Please upload at least one image.' }),
+});
+
+type ListingFormValues = z.infer<typeof listingSchema>;
 
 export default function AddListingModal() {
+  const { toast } = useToast();
+  const [open, setOpen] = useState(false);
+  const form = useForm<ListingFormValues>({
+    resolver: zodResolver(listingSchema),
+    defaultValues: {
+      name: '',
+      description: '',
+      price: 0,
+      category: undefined,
+      images: [],
+    },
+  });
+
+  const onSubmit = (data: ListingFormValues) => {
+    console.log(data);
+    toast({
+      title: 'Listing Posted!',
+      description: `Your listing "${data.name}" has been posted for sale.`,
+      className:
+        'bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 border-green-300 dark:border-green-700',
+    });
+    setOpen(false);
+    form.reset();
+  };
+
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button size="sm">
           <PlusCircle className="mr-2 h-4 w-4" />
@@ -25,58 +67,108 @@ export default function AddListingModal() {
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-2xl">
-        <DialogHeader>
-          <DialogTitle>Create New Listing</DialogTitle>
-          <DialogDescription>Fill out the details below to post a new item for sale.</DialogDescription>
-        </DialogHeader>
-        <div className="grid gap-4 py-4">
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="name" className="text-right">
-              Name
-            </Label>
-            <Input id="name" placeholder="e.g., Ergonomic Office Chair" className="col-span-3" />
-          </div>
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="description" className="text-right">
-              Description
-            </Label>
-            <Textarea id="description" placeholder="Describe your item in detail" className="col-span-3" />
-          </div>
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="price" className="text-right">
-              Price
-            </Label>
-            <Input id="price" type="number" placeholder="e.g., 120.50" className="col-span-3" />
-          </div>
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="category" className="text-right">
-              Category
-            </Label>
-            <Select>
-              <SelectTrigger className="col-span-3">
-                <SelectValue placeholder="Select a category" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="electronics">Electronics</SelectItem>
-                <SelectItem value="furniture">Furniture</SelectItem>
-                <SelectItem value="textbooks">Textbooks</SelectItem>
-                <SelectItem value="clothing">Clothing</SelectItem>
-                <SelectItem value="other">Other</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-           <div className="grid grid-cols-4 items-start gap-4">
-            <Label className="text-right pt-2">
-              Images
-            </Label>
-             <div className="col-span-3">
-              <ImageUpload />
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)}>
+            <DialogHeader>
+              <DialogTitle>Create New Listing</DialogTitle>
+              <DialogDescription>Fill out the details below to post a new item for sale.</DialogDescription>
+            </DialogHeader>
+            <div className="grid gap-4 py-4">
+              <FormField
+                control={form.control}
+                name="name"
+                render={({ field }) => (
+                  <FormItem className="grid grid-cols-4 items-center gap-4">
+                    <FormLabel className="text-right">Name</FormLabel>
+                    <div className="col-span-3">
+                      <FormControl>
+                        <Input placeholder="e.g., Ergonomic Office Chair" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </div>
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="description"
+                render={({ field }) => (
+                  <FormItem className="grid grid-cols-4 items-center gap-4">
+                    <FormLabel className="text-right">Description</FormLabel>
+                    <div className="col-span-3">
+                      <FormControl>
+                        <Textarea placeholder="Describe your item in detail" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </div>
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="price"
+                render={({ field }) => (
+                  <FormItem className="grid grid-cols-4 items-center gap-4">
+                    <FormLabel className="text-right">Price</FormLabel>
+                    <div className="col-span-3">
+                      <FormControl>
+                        <Input type="number" placeholder="e.g., 120.50" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </div>
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="category"
+                render={({ field }) => (
+                  <FormItem className="grid grid-cols-4 items-center gap-4">
+                    <FormLabel className="text-right">Category</FormLabel>
+                    <div className="col-span-3">
+                      <Select onValueChange={field.onChange} defaultValue={field.value}>
+                        <FormControl>
+                          <SelectTrigger>
+                            <SelectValue placeholder="Select a category" />
+                          </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                          <SelectItem value="electronics">Electronics</SelectItem>
+                          <SelectItem value="furniture">Furniture</SelectItem>
+                          <SelectItem value="textbooks">Textbooks</SelectItem>
+                          <SelectItem value="clothing">Clothing</SelectItem>
+                          <SelectItem value="other">Other</SelectItem>
+                        </SelectContent>
+                      </Select>
+                      <FormMessage />
+                    </div>
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="images"
+                render={({ field }) => (
+                  <FormItem className="grid grid-cols-4 items-start gap-4">
+                    <FormLabel className="text-right pt-2">Images</FormLabel>
+                    <div className="col-span-3">
+                      <FormControl>
+                        <ImageUpload
+                          value={field.value}
+                          onChange={(previews) => field.onChange(previews)}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </div>
+                  </FormItem>
+                )}
+              />
             </div>
-          </div>
-        </div>
-        <DialogFooter>
-          <Button type="submit">Post Listing</Button>
-        </DialogFooter>
+            <DialogFooter>
+              <Button type="submit">Post Listing</Button>
+            </DialogFooter>
+          </form>
+        </Form>
       </DialogContent>
     </Dialog>
   );
