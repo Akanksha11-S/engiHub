@@ -11,7 +11,7 @@ export default function Advertisement() {
       <CardContent className="p-4 flex flex-col md:flex-row items-center gap-6">
         <div className="relative w-32 h-32 flex-shrink-0">
              <Image 
-                src="https://picsum.photos/seed/stationery-supplies/300/300" 
+                src="/images/stationery.png" 
                 alt="Stationery Shop" 
                 width={128}
                 height={128}
