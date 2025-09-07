@@ -1,3 +1,4 @@
+
 import Link from 'next/link';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
@@ -16,7 +17,7 @@ export default function MobileNav() {
         <nav className="grid gap-6 text-lg font-medium">
           <Link href="/" className="flex items-center gap-2 text-lg font-semibold text-primary">
             <Building2 className="h-6 w-6" />
-            <span className="font-headline text-xl">EngiHub 2.0</span>
+            <span className="font-headline text-xl">EngiHub</span>
           </Link>
           <Link href="/" className="text-muted-foreground hover:text-foreground">
             For Sale

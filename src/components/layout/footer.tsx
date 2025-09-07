@@ -29,7 +29,7 @@ export default function Footer() {
                 <div>
                     <div className="flex items-center gap-2 mb-4">
                         <Building2 className="h-6 w-6 text-primary" />
-                        <span className="font-headline text-xl font-semibold text-foreground">EngiHub 2.0</span>
+                        <span className="font-headline text-xl font-semibold text-foreground">EngiHub</span>
                     </div>
                     <p className="text-sm max-w-md">
                         Your one-stop campus marketplace for buying and selling goods. Connecting students, simplifying campus life.
@@ -52,7 +52,7 @@ export default function Footer() {
 
                 <div className="border-t pt-6 flex flex-col md:flex-row items-center justify-between text-sm">
                     <p className="mb-4 md:mb-0">
-                        © {new Date().getFullYear()} EngiHub 2.0. All rights reserved.
+                        © {new Date().getFullYear()} EngiHub. All rights reserved.
                     </p>
                     <div className="flex gap-4">
                         <Link href="#" className="hover:text-primary">Privacy Policy</Link>

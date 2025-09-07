@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
@@ -6,7 +7,7 @@ import { AuthProvider } from '@/context/auth-context';
 import Footer from '@/components/layout/footer';
 
 export const metadata: Metadata = {
-  title: 'EngiHub 2.0',
+  title: 'EngiHub',
   description: 'Your Campus Marketplace',
 };
 
