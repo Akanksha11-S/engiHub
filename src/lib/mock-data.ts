@@ -37,9 +37,9 @@ export const products: Product[] = [
   {
     id: 1,
     name: 'Advanced Engineering Mathematics',
-    price: 975,
+    price: 1275,
     description: '10th Edition by Erwin Kreyszig. Barely used, no highlights or notes. Essential for advanced engineering courses.',
-    images: ['https://storage.googleapis.com/source-buckets/user-request-1_0.png', 'https://picsum.photos/seed/textbook-open/600/400'],
+    images: ['https://picsum.photos/seed/math-textbook/600/400', 'https://picsum.photos/seed/textbook-open/600/400'],
     category: 'Textbooks',
     condition: 'Like New',
     seller: users[0],
@@ -88,7 +88,7 @@ export const products: Product[] = [
   {
     id: 6,
     name: 'Fundamentals of Physics Textbook',
-    price: 1006,
+    price: 1306,
     description: '11th Edition by Halliday, Resnick, and Walker. Covers all major topics in introductory physics. Excellent condition.',
     images: ['https://picsum.photos/seed/physics-book/600/400', 'https://picsum.photos/seed/science-textbook/600/400'],
     category: 'Textbooks',
@@ -99,7 +99,7 @@ export const products: Product[] = [
    {
     id: 7,
     name: 'Calculus: Early Transcendentals',
-    price: 981,
+    price: 1281,
     description: '8th Edition by James Stewart. A must-have for first-year engineering students. No markings inside.',
     images: ['https://picsum.photos/seed/calculus-book/600/400'],
     category: 'Textbooks',
