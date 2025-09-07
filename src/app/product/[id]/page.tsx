@@ -6,7 +6,6 @@ import { products } from '@/lib/mock-data';
 import Header from '@/components/layout/header';
 import { Button } from '@/components/ui/button';
 import { Heart, Flag, MessageSquare, ShoppingCart } from 'lucide-react';
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import VerifiedStudentBadge from '@/components/product/verified-student-badge';
@@ -48,23 +47,19 @@ export default function ProductDetailPage() {
       <Header />
       <main className="flex-1 py-8 px-4 md:px-6">
         <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 md:grid-cols-2">
-          <Carousel className="w-full">
-            <CarouselContent>
-              {product.images.map((img, index) => (
-                <CarouselItem key={index} onDoubleClick={() => handleImageDoubleClick(img)}>
-                  <Card className="overflow-hidden">
-                    <CardContent className="p-0 aspect-video relative">
-                       <Image src={img} alt={`${product.name} image ${index + 1}`} fill className="object-cover" data-ai-hint={`${product.category.toLowerCase()} item`} />
-                    </CardContent>
-                  </Card>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="left-4" />
-            <CarouselNext className="right-4" />
-          </Carousel>
+          <div className="grid gap-4">
+            {product.images.map((img, index) => (
+              <div key={index} onDoubleClick={() => handleImageDoubleClick(img)} className="cursor-pointer">
+                <Card className="overflow-hidden">
+                  <CardContent className="p-0 aspect-video md:aspect-[4/3] relative">
+                    <Image src={img} alt={`${product.name} image ${index + 1}`} fill className="object-cover" data-ai-hint={`${product.category.toLowerCase()} item`} />
+                  </CardContent>
+                </Card>
+              </div>
+            ))}
+          </div>
 
-          <div className="space-y-6">
+          <div className="space-y-6 md:sticky top-24 self-start">
             <div className="space-y-2">
               <div className="flex items-center gap-2">
                 <Badge variant="secondary">{product.category}</Badge>
