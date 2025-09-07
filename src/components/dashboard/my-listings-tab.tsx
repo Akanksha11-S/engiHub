@@ -1,6 +1,7 @@
 
 'use client';
 
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
@@ -10,12 +11,14 @@ import { Badge } from '../ui/badge';
 import { ArrowUp } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import AddListingModal from './add-listing-modal';
+import type { Product } from '@/lib/mock-data';
 
 // For UI demo, we'll just show some products as "my listings"
-const myListings = products.slice(0, 3);
+const initialListings = products.slice(0, 3);
 
 export default function MyListingsTab() {
   const { toast } = useToast();
+  const [myListings, setMyListings] = useState<Product[]>(initialListings);
 
   const handleBump = (productName: string) => {
     toast({
@@ -25,6 +28,10 @@ export default function MyListingsTab() {
     });
   };
 
+  const addListing = (newListing: Product) => {
+    setMyListings(prevListings => [newListing, ...prevListings]);
+  }
+
   return (
     <Card>
       <CardHeader className="flex flex-row items-center justify-between">
@@ -32,7 +39,7 @@ export default function MyListingsTab() {
           <CardTitle>My Listings</CardTitle>
           <CardDescription>Manage your items for sale.</CardDescription>
         </div>
-        <AddListingModal />
+        <AddListingModal onListingAdded={addListing} />
       </CardHeader>
       <CardContent>
         <Table>
