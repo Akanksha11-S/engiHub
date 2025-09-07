@@ -9,9 +9,6 @@ import Footer from '@/components/layout/footer';
 export const metadata: Metadata = {
   title: 'EngiHub',
   description: 'Your Campus Marketplace',
-  icons: {
-    icon: '/favicon.ico',
-  },
 };
 
 export default function RootLayout({
