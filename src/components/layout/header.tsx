@@ -33,11 +33,12 @@ export default function Header() {
         </div>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" size="icon" className="h-9 w-9 rounded-full hover:bg-primary-foreground/10">
-              <Avatar>
+            <Button variant="ghost" className="relative h-auto flex-col justify-center gap-1 rounded-full p-0 w-12 hover:bg-primary-foreground/10">
+              <Avatar className="h-9 w-9">
                 <AvatarImage src="https://picsum.photos/seed/user/100/100" alt="User" />
                 <AvatarFallback>U</AvatarFallback>
               </Avatar>
+              <span className="text-xs font-medium">Aarav S.</span>
               <span className="sr-only">Toggle user menu</span>
             </Button>
           </DropdownMenuTrigger>
