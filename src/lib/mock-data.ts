@@ -28,9 +28,9 @@ export interface WTBRequest {
 }
 
 export const users: User[] = [
-  { id: 1, name: 'Aarav Sharma', avatarUrl: '/images/aarav.png', isStudentVerified: true, online: true },
-  { id: 2, name: 'Priya Patel', avatarUrl: '/images/priya.png', isStudentVerified: false, online: false },
-  { id: 3, name: 'Rohan Gupta', avatarUrl: '/images/rohan.png', isStudentVerified: true, online: true },
+  { id: 1, name: 'Aarav Sharma', avatarUrl: 'https://picsum.photos/seed/aarav/100/100', isStudentVerified: true, online: true },
+  { id: 2, name: 'Priya Patel', avatarUrl: 'https://picsum.photos/seed/priya/100/100', isStudentVerified: false, online: false },
+  { id: 3, name: 'Rohan Gupta', avatarUrl: 'https://picsum.photos/seed/rohan/100/100', isStudentVerified: true, online: true },
 ];
 
 export const products: Product[] = [

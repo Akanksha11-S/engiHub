@@ -57,7 +57,7 @@ export default function Header() {
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" className="relative h-8 w-8 rounded-full hover:bg-primary/80 focus-visible:ring-0 focus-visible:ring-offset-0">
               <Avatar className="h-8 w-8">
-                <AvatarImage src={`/images/${userName.toLowerCase().replace(/\s/g, '')}.png`} alt={userName} />
+                <AvatarImage src={`https://picsum.photos/seed/${userName.toLowerCase().replace(/\s/g, '')}/100/100`} alt={userName} />
                 <AvatarFallback>{getInitials(userName)}</AvatarFallback>
               </Avatar>
             </Button>
