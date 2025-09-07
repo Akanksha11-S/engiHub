@@ -16,6 +16,7 @@ export interface Product {
   category: 'Textbooks' | 'Stationery' | 'Electronics' | 'Other';
   condition: 'New' | 'Like New' | 'Used';
   seller: User;
+  featured?: boolean;
 }
 
 export interface WTBRequest {
@@ -36,17 +37,18 @@ export const products: Product[] = [
   {
     id: 1,
     name: 'Advanced Engineering Mathematics',
-    price: 300,
+    price: 150,
     description: '10th Edition by Erwin Kreyszig. Barely used, no highlights or notes. Essential for advanced engineering courses.',
     images: ['https://picsum.photos/seed/math-book/600/400', 'https://picsum.photos/seed/textbook-open/600/400'],
     category: 'Textbooks',
     condition: 'Like New',
     seller: users[0],
+    featured: true,
   },
   {
     id: 2,
     name: 'Casio FX-991EX Scientific Calculator',
-    price: 375,
+    price: 187.5,
     description: 'ClassWiz series with high-resolution display. Perfect for engineering students. Comes with a protective hard case.',
     images: ['https://picsum.photos/seed/scientific-calculator/600/400', 'https://picsum.photos/seed/calculator-close-up/600/400'],
     category: 'Electronics',
@@ -56,7 +58,7 @@ export const products: Product[] = [
   {
     id: 3,
     name: 'Mini Drafter for Engineering Drawing',
-    price: 200,
+    price: 100,
     description: 'Portable and accurate mini drafter. Essential for engineering drawing classes. Comes with a carrying case.',
     images: ['https://picsum.photos/seed/mini-drafter/600/400', 'https://picsum.photos/seed/drafting-tools/600/400'],
     category: 'Stationery',
@@ -66,7 +68,7 @@ export const products: Product[] = [
   {
     id: 4,
     name: 'Set of 12 Mechanical Pencils',
-    price: 112.5,
+    price: 56.25,
     description: '0.5mm lead mechanical pencils with extra lead refills and erasers. Brand new, in original packaging.',
     images: ['https://picsum.photos/seed/mech-pencils/600/400', 'https://picsum.photos/seed/pencils-box/600/400'],
     category: 'Stationery',
@@ -76,7 +78,7 @@ export const products: Product[] = [
   {
     id: 5,
     name: 'A2 Size Drawing Board',
-    price: 625,
+    price: 312.5,
     description: 'Wooden drawing board with stand. Perfect for architectural and engineering drawings. Good condition.',
     images: ['https://picsum.photos/seed/drawing-board/600/400', 'https://picsum.photos/seed/art-board/600/400'],
     category: 'Stationery',
@@ -86,17 +88,18 @@ export const products: Product[] = [
   {
     id: 6,
     name: 'Fundamentals of Physics Textbook',
-    price: 450,
+    price: 225,
     description: '11th Edition by Halliday, Resnick, and Walker. Covers all major topics in introductory physics. Excellent condition.',
     images: ['https://picsum.photos/seed/physics-book/600/400', 'https://picsum.photos/seed/science-textbook/600/400'],
     category: 'Textbooks',
     condition: 'Like New',
     seller: users[2],
+    featured: true,
   },
    {
     id: 7,
     name: 'Calculus: Early Transcendentals',
-    price: 325,
+    price: 162.5,
     description: '8th Edition by James Stewart. A must-have for first-year engineering students. No markings inside.',
     images: ['https://picsum.photos/seed/calculus-book/600/400'],
     category: 'Textbooks',
@@ -106,7 +109,7 @@ export const products: Product[] = [
   {
     id: 8,
     name: 'Set of French Curves',
-    price: 75,
+    price: 37.5,
     description: 'Set of 3 plastic french curves for manual drafting. Essential tool for drawing smooth curves of varying radii.',
     images: ['https://picsum.photos/seed/french-curves/600/400'],
     category: 'Stationery',
@@ -116,7 +119,7 @@ export const products: Product[] = [
   {
     id: 9,
     name: '30cm Roller Scale',
-    price: 125,
+    price: 62.5,
     description: 'Transparent roller scale, perfect for drawing parallel lines and graphs. In great condition.',
     images: ['https://picsum.photos/seed/roller-scale/600/400'],
     category: 'Stationery',
@@ -126,7 +129,7 @@ export const products: Product[] = [
   {
     id: 10,
     name: 'Digital Caliper',
-    price: 800,
+    price: 400,
     description: '6-inch stainless steel digital caliper for precise measurements. Comes with a case and spare battery.',
     images: ['https://picsum.photos/seed/digital-caliper/600/400'],
     category: 'Electronics',
