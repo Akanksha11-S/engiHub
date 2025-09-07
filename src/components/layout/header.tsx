@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from 'next/link';
@@ -8,6 +9,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Building2, LayoutGrid, LogOut, Heart, User } from 'lucide-react';
 import SearchBarWithSuggestions from '@/components/shared/search-bar-with-suggestions';
 import MobileNav from './mobile-nav';
+import { cn } from '@/lib/utils';
 
 export default function Header() {
   const { userName } = useAuth();
@@ -15,10 +17,10 @@ export default function Header() {
   const getInitials = (name: string) => {
     if (!name) return 'U';
     const names = name.split(' ');
-    if (names.length > 1) {
+    if (names.length > 1 && names[0] && names[1]) {
       return `${names[0][0]}${names[1][0]}`;
     }
-    return name[0];
+    return name[0] || 'U';
   }
   
   const getFirstName = (name: string) => {
@@ -27,19 +29,19 @@ export default function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-50 flex h-16 items-center gap-4 border-b bg-primary/90 px-4 text-primary-foreground backdrop-blur-sm md:px-6">
+    <header className="sticky top-0 z-50 flex h-16 items-center gap-4 border-b bg-background/95 px-4 backdrop-blur-sm md:px-6">
       <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
-        <Link href="/" className="flex items-center gap-2 text-lg font-semibold md:text-base">
+        <Link href="/" className="flex items-center gap-2 text-lg font-semibold md:text-base text-primary">
           <Building2 className="h-6 w-6" />
           <span className="font-headline text-xl">EngiHub 2.0</span>
         </Link>
-        <Link href="/" className="transition-colors hover:text-primary-foreground/80">
+        <Link href="/" className="text-foreground/60 transition-colors hover:text-foreground/80">
           For Sale
         </Link>
-        <Link href="/wtb" className="transition-colors hover:text-primary-foreground/80">
+        <Link href="/wtb" className="text-foreground/60 transition-colors hover:text-foreground/80">
           WTB Board
         </Link>
-        <Link href="/dashboard" className="transition-colors hover:text-primary-foreground/80">
+        <Link href="/dashboard" className="text-foreground/60 transition-colors hover:text-foreground/80">
           Dashboard
         </Link>
       </nav>
@@ -52,17 +54,22 @@ export default function Header() {
         </div>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="relative h-auto flex-col justify-center gap-1 rounded-full p-0 w-12 hover:bg-primary-foreground/10">
-              <Avatar className="h-9 w-9">
-                <AvatarImage src={`https://picsum.photos/seed/${userName}/100/100`} alt="User" />
+            <Button variant="ghost" className="relative h-8 w-8 rounded-full">
+              <Avatar className="h-8 w-8">
+                <AvatarImage src={`https://picsum.photos/seed/${userName}/100/100`} alt={userName} />
                 <AvatarFallback>{getInitials(userName)}</AvatarFallback>
               </Avatar>
-              <span className="text-xs font-medium">{getFirstName(userName)}</span>
-              <span className="sr-only">Toggle user menu</span>
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+          <DropdownMenuContent className="w-56" align="end">
+            <DropdownMenuLabel className="font-normal">
+              <div className="flex flex-col space-y-1">
+                <p className="text-sm font-medium leading-none">{userName}</p>
+                <p className="text-xs leading-none text-muted-foreground">
+                  student@university.edu
+                </p>
+              </div>
+            </DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem asChild>
               <Link href="/dashboard"><User className="mr-2 h-4 w-4" />Profile</Link>
