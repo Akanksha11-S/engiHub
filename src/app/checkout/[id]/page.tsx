@@ -98,7 +98,7 @@ export default function CheckoutPage() {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="flex items-center gap-4">
-                    <Image src={product.images[0]} alt={product.name} width={80} height={80} className="rounded-md object-cover" data-ai-hint="product image" />
+                    <Image src={product.images[0]} alt={product.name} width={80} height={80} className="rounded-md object-cover" data-ai-hint={`${product.category.toLowerCase()} item`} />
                     <div>
                       <p className="font-semibold">{product.name}</p>
                       <p className="text-sm text-muted-foreground">{product.category}</p>

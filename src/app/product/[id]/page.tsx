@@ -44,7 +44,7 @@ export default function ProductDetailPage() {
                 <CarouselItem key={index}>
                   <Card className="overflow-hidden">
                     <CardContent className="p-0 aspect-video relative">
-                       <Image src={img} alt={`${product.name} image ${index + 1}`} fill className="object-cover" data-ai-hint="product image" />
+                       <Image src={img} alt={`${product.name} image ${index + 1}`} fill className="object-cover" data-ai-hint={`${product.category.toLowerCase()} item`} />
                     </CardContent>
                   </Card>
                 </CarouselItem>

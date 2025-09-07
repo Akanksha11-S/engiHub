@@ -62,7 +62,7 @@ export default function MyListingsTab() {
                     height="64"
                     src={product.images[0]}
                     width="64"
-                    data-ai-hint="product image"
+                    data-ai-hint={`${product.category.toLowerCase()} item`}
                   />
                 </TableCell>
                 <TableCell className="font-medium">{product.name}</TableCell>
