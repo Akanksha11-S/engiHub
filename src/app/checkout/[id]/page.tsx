@@ -2,7 +2,7 @@
 'use client';
 
 import { useState } from 'react';
-import { notFound, useRouter } from 'next/navigation';
+import { notFound, useRouter, useParams } from 'next/navigation';
 import { products } from '@/lib/mock-data';
 import Header from '@/components/layout/header';
 import { Button } from '@/components/ui/button';
@@ -13,11 +13,13 @@ import { useToast } from '@/hooks/use-toast';
 import { CreditCard, Lock } from 'lucide-react';
 import Image from 'next/image';
 
-export default function CheckoutPage({ params }: { params: { id: string } }) {
+export default function CheckoutPage() {
   const router = useRouter();
+  const params = useParams();
   const { toast } = useToast();
   const [isProcessing, setIsProcessing] = useState(false);
-  const product = products.find(p => p.id.toString() === params.id);
+  const productId = Array.isArray(params.id) ? params.id[0] : params.id;
+  const product = products.find(p => p.id.toString() === productId);
 
   if (!product) {
     notFound();

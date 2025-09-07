@@ -1,4 +1,6 @@
-import { notFound } from 'next/navigation';
+
+'use client';
+import { notFound, useParams } from 'next/navigation';
 import Image from 'next/image';
 import { products } from '@/lib/mock-data';
 import Header from '@/components/layout/header';
@@ -22,8 +24,10 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 
-export default function ProductDetailPage({ params }: { params: { id: string } }) {
-  const product = products.find(p => p.id.toString() === params.id);
+export default function ProductDetailPage() {
+  const params = useParams();
+  const productId = Array.isArray(params.id) ? params.id[0] : params.id;
+  const product = products.find(p => p.id.toString() === productId);
 
   if (!product) {
     notFound();
