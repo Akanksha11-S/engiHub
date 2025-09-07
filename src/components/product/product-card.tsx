@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from 'next/link';
@@ -52,7 +53,7 @@ export default function ProductCard({ product }: ProductCardProps) {
             {product.name}
           </Link>
         </CardTitle>
-        <p className="text-2xl font-semibold text-primary">${product.price.toFixed(2)}</p>
+        <p className="text-2xl font-semibold text-primary">₹{product.price.toFixed(2)}</p>
       </CardContent>
       <CardFooter className="p-4 pt-0">
         <Button

@@ -61,7 +61,7 @@ export default function ProductDetailPage() {
                 <Badge variant="outline">{product.condition}</Badge>
               </div>
               <h1 className="font-headline text-3xl font-bold lg:text-4xl">{product.name}</h1>
-              <p className="text-3xl font-bold text-primary">${product.price.toFixed(2)}</p>
+              <p className="text-3xl font-bold text-primary">₹{product.price.toFixed(2)}</p>
             </div>
             
             <p className="text-muted-foreground">{product.description}</p>

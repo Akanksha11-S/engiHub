@@ -41,7 +41,7 @@ export default function CheckoutPage() {
     }, 2000);
   };
 
-  const shipping = 5.00;
+  const shipping = 50.00;
   const tax = product.price * 0.08;
   const total = product.price + shipping + tax;
 
@@ -82,7 +82,7 @@ export default function CheckoutPage() {
                       <Input id="name" placeholder="John Doe" required />
                     </div>
                     <Button type="submit" className="w-full" disabled={isProcessing}>
-                      {isProcessing ? 'Processing...' : `Pay $${total.toFixed(2)}`}
+                      {isProcessing ? 'Processing...' : `Pay ₹${total.toFixed(2)}`}
                     </Button>
                   </form>
                    <p className="text-xs text-muted-foreground mt-4 flex items-center justify-center">
@@ -103,24 +103,24 @@ export default function CheckoutPage() {
                       <p className="font-semibold">{product.name}</p>
                       <p className="text-sm text-muted-foreground">{product.category}</p>
                     </div>
-                    <p className="ml-auto font-semibold">${product.price.toFixed(2)}</p>
+                    <p className="ml-auto font-semibold">₹{product.price.toFixed(2)}</p>
                   </div>
                   <div className="border-t pt-4 space-y-2">
                      <div className="flex justify-between">
                         <span>Subtotal</span>
-                        <span>${product.price.toFixed(2)}</span>
+                        <span>₹{product.price.toFixed(2)}</span>
                     </div>
                      <div className="flex justify-between text-muted-foreground">
                         <span>Shipping</span>
-                        <span>${shipping.toFixed(2)}</span>
+                        <span>₹{shipping.toFixed(2)}</span>
                     </div>
                      <div className="flex justify-between text-muted-foreground">
                         <span>Taxes</span>
-                        <span>${tax.toFixed(2)}</span>
+                        <span>₹{tax.toFixed(2)}</span>
                     </div>
                     <div className="border-t pt-2 mt-2 flex justify-between font-bold text-lg">
                         <span>Total</span>
-                        <span>${total.toFixed(2)}</span>
+                        <span>₹{total.toFixed(2)}</span>
                     </div>
                   </div>
                 </CardContent>

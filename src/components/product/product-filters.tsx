@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -14,11 +15,11 @@ interface ProductFiltersProps {
   setFilteredProducts: (products: Product[]) => void;
 }
 
-const categories = ['Electronics', 'Furniture', 'Textbooks', 'Clothing', 'Other'];
+const categories = ['Textbooks', 'Electronics', 'Stationery', 'Other'];
 const conditions = ['New', 'Like New', 'Used'];
 
 export default function ProductFilters({ allProducts, setFilteredProducts }: ProductFiltersProps) {
-  const [priceRange, setPriceRange] = useState([0, 1000]);
+  const [priceRange, setPriceRange] = useState([0, 5000]);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedCondition, setSelectedCondition] = useState<string>('All');
 
@@ -47,7 +48,7 @@ export default function ProductFilters({ allProducts, setFilteredProducts }: Pro
   };
   
   const clearFilters = () => {
-    setPriceRange([0, 1000]);
+    setPriceRange([0, 5000]);
     setSelectedCategories([]);
     setSelectedCondition('All');
   }
@@ -62,14 +63,14 @@ export default function ProductFilters({ allProducts, setFilteredProducts }: Pro
           <h3 className="mb-2 font-semibold">Price Range</h3>
           <Slider
             min={0}
-            max={1000}
-            step={10}
+            max={5000}
+            step={100}
             value={priceRange}
             onValueChange={setPriceRange}
           />
           <div className="mt-2 flex justify-between text-sm text-muted-foreground">
-            <span>${priceRange[0]}</span>
-            <span>${priceRange[1]}</span>
+            <span>₹{priceRange[0]}</span>
+            <span>₹{priceRange[1]}</span>
           </div>
         </div>
         <div>

@@ -1,3 +1,4 @@
+
 'use client';
 
 import {
@@ -82,7 +83,7 @@ export default function AddListingModal() {
                     <FormLabel className="text-right">Name</FormLabel>
                     <div className="col-span-3">
                       <FormControl>
-                        <Input placeholder="e.g., Ergonomic Office Chair" {...field} />
+                        <Input placeholder="e.g., Casio FX-991EX Calculator" {...field} />
                       </FormControl>
                       <FormMessage />
                     </div>
@@ -109,10 +110,10 @@ export default function AddListingModal() {
                 name="price"
                 render={({ field }) => (
                   <FormItem className="grid grid-cols-4 items-center gap-4">
-                    <FormLabel className="text-right">Price</FormLabel>
+                    <FormLabel className="text-right">Price (₹)</FormLabel>
                     <div className="col-span-3">
                       <FormControl>
-                        <Input type="number" placeholder="e.g., 120.50" {...field} />
+                        <Input type="number" placeholder="e.g., 1500.00" {...field} />
                       </FormControl>
                       <FormMessage />
                     </div>
@@ -133,10 +134,9 @@ export default function AddListingModal() {
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                          <SelectItem value="electronics">Electronics</SelectItem>
-                          <SelectItem value="furniture">Furniture</SelectItem>
                           <SelectItem value="textbooks">Textbooks</SelectItem>
-                          <SelectItem value="clothing">Clothing</SelectItem>
+                          <SelectItem value="electronics">Electronics</SelectItem>
+                          <SelectItem value="stationery">Stationery</SelectItem>
                           <SelectItem value="other">Other</SelectItem>
                         </SelectContent>
                       </Select>

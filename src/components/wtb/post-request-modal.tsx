@@ -1,3 +1,4 @@
+
 'use client';
 
 import {
@@ -109,10 +110,10 @@ export default function PostRequestModal() {
                 name="budget"
                 render={({ field }) => (
                   <FormItem className="grid grid-cols-4 items-center gap-4">
-                    <FormLabel className="text-right">Your Budget</FormLabel>
+                    <FormLabel className="text-right">Your Budget (₹)</FormLabel>
                      <div className="col-span-3">
                         <FormControl>
-                            <Input type="number" placeholder="e.g., 90.00" {...field} />
+                            <Input type="number" placeholder="e.g., 7000.00" {...field} />
                         </FormControl>
                         <FormMessage className="mt-1" />
                     </div>

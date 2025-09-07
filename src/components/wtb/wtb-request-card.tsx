@@ -1,3 +1,4 @@
+
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { MessageSquare } from 'lucide-react';
@@ -14,7 +15,7 @@ export default function WTBRequestCard({ request }: WTBRequestCardProps) {
     <Card className="flex flex-col">
       <CardHeader>
         <CardTitle>{request.title}</CardTitle>
-        <CardDescription>Budget: <span className="font-semibold text-primary">${request.budget.toFixed(2)}</span></CardDescription>
+        <CardDescription>Budget: <span className="font-semibold text-primary">₹{request.budget.toFixed(2)}</span></CardDescription>
       </CardHeader>
       <CardContent className="flex-1">
         <p className="text-sm text-muted-foreground">{request.description}</p>

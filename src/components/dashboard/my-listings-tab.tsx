@@ -1,3 +1,4 @@
+
 'use client';
 
 import { Button } from '@/components/ui/button';
@@ -6,7 +7,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { products } from '@/lib/mock-data';
 import Image from 'next/image';
 import { Badge } from '../ui/badge';
-import { ArrowUp, PlusCircle } from 'lucide-react';
+import { ArrowUp } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import AddListingModal from './add-listing-modal';
 
@@ -61,7 +62,7 @@ export default function MyListingsTab() {
                 <TableCell>
                   <Badge variant="outline">Active</Badge>
                 </TableCell>
-                <TableCell>${product.price.toFixed(2)}</TableCell>
+                <TableCell>₹{product.price.toFixed(2)}</TableCell>
                 <TableCell>
                   <Button size="sm" variant="outline" onClick={() => handleBump(product.name)}>
                     <ArrowUp className="mr-2 h-4 w-4" />
