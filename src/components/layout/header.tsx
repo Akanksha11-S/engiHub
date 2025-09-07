@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Building2, LayoutGrid, LogIn, ShoppingBasket, User, Heart } from 'lucide-react';
+import { Building2, LayoutGrid, LogOut, ShoppingBasket, User, Heart } from 'lucide-react';
 import SearchBarWithSuggestions from '@/components/shared/search-bar-with-suggestions';
 import MobileNav from './mobile-nav';
 
@@ -56,7 +56,7 @@ export default function Header() {
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem asChild>
-              <Link href="/login"><LogIn className="mr-2 h-4 w-4" />Login</Link>
+              <Link href="/login"><LogOut className="mr-2 h-4 w-4" />Logout</Link>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

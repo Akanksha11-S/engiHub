@@ -20,6 +20,10 @@ export default function LoginForm() {
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="space-y-2">
+              <Label htmlFor="buyer-name">Name</Label>
+              <Input id="buyer-name" type="text" placeholder="Aarav Sharma" required />
+            </div>
+            <div className="space-y-2">
               <Label htmlFor="buyer-email">Email</Label>
               <Input id="buyer-email" type="email" placeholder="student@university.edu" required />
             </div>
@@ -40,6 +44,10 @@ export default function LoginForm() {
             <CardDescription>Manage your listings, view sales, and interact with buyers.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="seller-name">Name</Label>
+              <Input id="seller-name" type="text" placeholder="Priya Patel" required />
+            </div>
             <div className="space-y-2">
               <Label htmlFor="seller-email">Email</Label>
               <Input id="seller-email" type="email" placeholder="seller@university.edu" required />
