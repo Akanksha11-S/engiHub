@@ -1,11 +1,27 @@
+'use client';
+
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { useAuth } from '@/context/auth-context';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import Link from "next/link"
 
 export default function LoginForm() {
+  const router = useRouter();
+  const { setUserName } = useAuth();
+  const [buyerName, setBuyerName] = useState('');
+  const [sellerName, setSellerName] = useState('');
+
+  const handleLogin = (name: string) => {
+    if (name.trim()) {
+      setUserName(name);
+      router.push('/');
+    }
+  };
+
   return (
     <Tabs defaultValue="buyer" className="w-full">
       <TabsList className="grid w-full grid-cols-2">
@@ -21,7 +37,7 @@ export default function LoginForm() {
           <CardContent className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="buyer-name">Name</Label>
-              <Input id="buyer-name" type="text" placeholder="Aarav Sharma" required />
+              <Input id="buyer-name" type="text" placeholder="Aarav Sharma" required value={buyerName} onChange={(e) => setBuyerName(e.target.value)} />
             </div>
             <div className="space-y-2">
               <Label htmlFor="buyer-email">Email</Label>
@@ -33,7 +49,7 @@ export default function LoginForm() {
             </div>
           </CardContent>
           <CardFooter>
-            <Button className="w-full" asChild><Link href="/">Log in</Link></Button>
+            <Button className="w-full" onClick={() => handleLogin(buyerName)}>Log in</Button>
           </CardFooter>
         </Card>
       </TabsContent>
@@ -46,7 +62,7 @@ export default function LoginForm() {
           <CardContent className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="seller-name">Name</Label>
-              <Input id="seller-name" type="text" placeholder="Priya Patel" required />
+              <Input id="seller-name" type="text" placeholder="Priya Patel" required value={sellerName} onChange={(e) => setSellerName(e.target.value)} />
             </div>
             <div className="space-y-2">
               <Label htmlFor="seller-email">Email</Label>
@@ -58,7 +74,7 @@ export default function LoginForm() {
             </div>
           </CardContent>
           <CardFooter>
-            <Button className="w-full" asChild><Link href="/">Log in</Link></Button>
+            <Button className="w-full" onClick={() => handleLogin(sellerName)}>Log in</Button>
           </CardFooter>
         </Card>
       </TabsContent>

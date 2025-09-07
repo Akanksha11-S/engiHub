@@ -1,12 +1,31 @@
+'use client';
+
 import Link from 'next/link';
+import { useAuth } from '@/context/auth-context';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Building2, LayoutGrid, LogOut, ShoppingBasket, User, Heart } from 'lucide-react';
+import { Building2, LayoutGrid, LogOut, Heart, User } from 'lucide-react';
 import SearchBarWithSuggestions from '@/components/shared/search-bar-with-suggestions';
 import MobileNav from './mobile-nav';
 
 export default function Header() {
+  const { userName } = useAuth();
+  
+  const getInitials = (name: string) => {
+    if (!name) return 'U';
+    const names = name.split(' ');
+    if (names.length > 1) {
+      return `${names[0][0]}${names[1][0]}`;
+    }
+    return name[0];
+  }
+  
+  const getFirstName = (name: string) => {
+     if (!name) return 'User';
+     return name.split(' ')[0];
+  }
+
   return (
     <header className="sticky top-0 z-50 flex h-16 items-center gap-4 border-b bg-primary/90 px-4 text-primary-foreground backdrop-blur-sm md:px-6">
       <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
@@ -35,10 +54,10 @@ export default function Header() {
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" className="relative h-auto flex-col justify-center gap-1 rounded-full p-0 w-12 hover:bg-primary-foreground/10">
               <Avatar className="h-9 w-9">
-                <AvatarImage src="https://picsum.photos/seed/user/100/100" alt="User" />
-                <AvatarFallback>U</AvatarFallback>
+                <AvatarImage src={`https://picsum.photos/seed/${userName}/100/100`} alt="User" />
+                <AvatarFallback>{getInitials(userName)}</AvatarFallback>
               </Avatar>
-              <span className="text-xs font-medium">Aarav S.</span>
+              <span className="text-xs font-medium">{getFirstName(userName)}</span>
               <span className="sr-only">Toggle user menu</span>
             </Button>
           </DropdownMenuTrigger>
